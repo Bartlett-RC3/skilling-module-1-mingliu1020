@@ -11,17 +11,20 @@ public class Session4RayCasting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // Ray direction
+
+        //RAY CASTING STEPS 
+        //  第一步: create Ray, Ray direction
         Vector3 castedRayDirection = transform.TransformDirection(Vector3.forward);
 
-        // Store the object that is in front
+        // step 2: see what's infront of me , Store the object that is in front
         RaycastHit objectInFront;
 
-        // Ray casting
-        if (Physics.Raycast(transform.position, castedRayDirection, out objectInFront))
+        //step 3 : do sth with that object,  Ray casting
+        if (Physics.Raycast(transform.position, castedRayDirection, out objectInFront))  //(origiion, direction, output info) 
         {
             string objectInFrontName = objectInFront.transform.name;
             Debug.Log("There is an object in front of me! It`s name is: " + objectInFrontName);
+           
             Destroy(objectInFront.transform.gameObject);
         }
 
